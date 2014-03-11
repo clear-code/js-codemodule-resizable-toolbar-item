@@ -1,10 +1,10 @@
 /**
- * @fileOverview Resizable Toolbar Item Library for Firefox 3.5 or later
+ * @fileOverview Resizable Toolbar Item Library for Firefox 24 or later
  * @author       ClearCode Inc.
  * @version      2
  *
  * @license
- *   The MIT License, Copyright (c) 2011-2012 ClearCode Inc.
+ *   The MIT License, Copyright (c) 2011-2014 ClearCode Inc.
  * @url https://github.com/clear-code/js-codemodule-resizable-toolbar-item
  */
 
@@ -27,7 +27,7 @@ if (typeof namespace == 'undefined') {
 
 var resizableToolbarItem;
 (function() {
-	const currentRevision = 1;
+	const currentRevision = 2;
 
 	var loadedRevision = 'resizableToolbarItem' in namespace ?
 			namespace.resizableToolbarItem.revision :
@@ -292,9 +292,13 @@ var resizableToolbarItem;
 			}
 			var target = next || previous;
 
-			var event = w.document.createEvent('DataContainerEvent');
-			event.initEvent(this.EVENT_TYPE_RESET, true, false);
-			event.setData('splitter', splitter);
+			var event = new w.CustomEvent(this.EVENT_TYPE_RESET, {
+				bubbles    : true,
+				cancelable : false,
+				detail     : {
+					splitter : splitter
+				}
+			});
 			target.dispatchEvent(event);
 
 			this.resizing = false;
