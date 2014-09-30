@@ -1,5 +1,5 @@
 /**
- * @fileOverview Resizable Toolbar Item Library for Firefox 24 or later
+ * @fileOverview Resizable Toolbar Item Library for Firefox 31 or later
  * @author       ClearCode Inc.
  * @version      5
  *
